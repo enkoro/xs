@@ -15,7 +15,7 @@ FROM nginx:stable-alpine3.20
 RUN apk --no-cache add openssl=3.3.1-r3 && rm -rf /var/cache/apk/*
 WORKDIR /app
 COPY --from=build /build/app .
-COPY cfg.json.tpl .
-COPY default.conf.tpl . 
+COPY *.template .
+RUN mkdir -p /etc/nginx/templates/ && mv /app/default.conf.template /etc/nginx/templates/
 COPY run.sh .
 CMD [ "/app/run.sh" ]
