@@ -18,3 +18,4 @@ COPY --from=build /build/app .
 COPY cfg.json.tpl .
 COPY default.conf.tpl . 
 COPY run.sh .
+CMD [ "/app/run.sh" ]
