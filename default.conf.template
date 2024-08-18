@@ -1,7 +1,8 @@
 server {
     listen 80;
     location = / {
-        return 200;
+        add_header Content-Type text/plain;
+        return 200 'ok';
     }
     location = /${PH} {
         proxy_redirect off;
