@@ -2,18 +2,16 @@
 cat <<EOF
 {
   "log": {
-    "loglevel": "warning",
-    "error": "/app/error.log",
-    "access": "/app/access.log"
+    "loglevel": "warning"
   },
   "inbounds": [
     {
       "tag": "ddws",
       "listen": "127.0.0.1",
-      "port": 2002,
+      "port": 34567,
       "protocol": "dokodemo-door",
       "settings": {
-        "address": "${HOST}",
+        "address": "127.0.0.1",
         "network": "tcp",
         "followRedirect": false
       },
@@ -33,7 +31,7 @@ cat <<EOF
     },
     {
       "listen": "127.0.0.1",
-      "port": 2003,
+      "port": 45678,
       "protocol": "shadowsocks",
       "settings": {
         "method": "2022-blake3-chacha20-poly1305",
@@ -70,7 +68,7 @@ cat <<EOF
       "tag": "loopback",
       "protocol": "freedom",
       "settings": {
-        "redirect": "127.0.0.1:2003"
+        "redirect": "127.0.0.1:45678"
       }
     },
     {
